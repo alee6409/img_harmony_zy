@@ -7,4 +7,6 @@ darknet_zy.py is yolov3 structure network
 
 util_zy.py contains some useful tools for darknet and detection
 
-adjust_hue.py and rgb2grey.py is my tools, which only create my datasets from COCO datasets and not neccessary to this framework.
+adjust_hue.py and rgb2grey.py are my tools, which only create my datasets from COCO datasets and not neccessary to this framework.
+
+to be continued.
