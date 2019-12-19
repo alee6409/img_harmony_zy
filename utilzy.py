@@ -202,8 +202,7 @@ def cal_conf(prediction, anno, confidence, CUDA, batch_size):
                     bbox_j_i = bbox_iou(pred_j[0:4], torch.tensor(anno_i['bbox']).cuda())
                 else:
                     bbox_j_i = bbox_iou(pred_j[0:4], torch.tensor(anno_i['bbox']))
-                # max_j_i = torch.max(bbox_j_i, output)
-                # output = max_j_i
+                
                 output[j] = bbox_j_i
 
         
@@ -222,10 +221,9 @@ def cal_conf(prediction, anno, confidence, CUDA, batch_size):
         
         c = sum(img_pred[:, 4] == 1)
 
-        if c > d:
+        if c >= d:
             img_pred = img_pred[:d, :].unsqueeze(0)
-        elif c=d:
-            img_pred = img_pred.unsqueeze(0)
+        
         else:
             conf_mask = (img_pred[:, 4] <= confidence).float().unsqueeze(1)
             img_pred_2 = img_pred*conf_mask

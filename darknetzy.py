@@ -5,10 +5,13 @@ import torch.nn as nn
 import torch.nn.functional as F 
 from torch.autograd import Variable
 import numpy as np
-from util_zy import * 
+import importlib
+
 import cv2 as cv
 
 
+#moduleName = input('utilzy.*')
+utilzy = importlib.import_module('utilzy')
 
 def get_test_input():
     img = cv.imread("dog-cycle-car.png")
@@ -209,7 +212,7 @@ class Darknet(nn.Module):
         
                 #Transform 
                 img_pred = img_pred.data
-                img_pred = predict_transform(img_pred, inp_dim, anchors, num_classes, CUDA)
+                img_pred = utilzy.predict_transform(img_pred, inp_dim, anchors, num_classes, CUDA)
                 if not write:              #if no collector has been intialised. 
                     detections = img_pred
                     write = 1

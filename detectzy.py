@@ -9,8 +9,8 @@ import cv2 as cv
 import argparse
 import os 
 import os.path as osp
-from darknet_zy import Darknet
-from util_zy import *
+
+
 import pickle as pkl
 import pandas as pd
 import random
@@ -20,6 +20,10 @@ from torch.utils.data import DataLoader
 from torch.autograd import Variable
 import torchvision.transforms as transforms
 import json
+import importlib
+
+utilzy = importlib.import_module('utilzy')
+darknetzy = importlib.import_module('darknetzy')
 
 def arg_parse():
     """
@@ -76,7 +80,7 @@ darknet_datasets = datasets.CocoDetection(root='d:/cs/data/coco/train2017_2/',
 #/////annotations = dataloader
 
 num_classes = 80
-classes = load_classes("data/coco.names")
+classes = utilzy.load_classes("data/coco.names")
 
 
 
@@ -84,7 +88,7 @@ classes = load_classes("data/coco.names")
 print("Loading network.....")
 
 #initialize network
-darknet = Darknet(args.cfgfile)
+darknet = darknetzy.Darknet(args.cfgfile)
 
 #training by ourselves
 #model.load_weights(args.weightsfile)
@@ -168,7 +172,7 @@ train_start = time.time()
 for epoch in range(args.n_epochs):
     epoch_start = time.time()
 
-    for i, (img, anno) in enumerate(darknet_datasets):
+     for i, (img, anno) in enumerate(darknet_datasets):
 
         
         #load the image 
@@ -176,7 +180,7 @@ for epoch in range(args.n_epochs):
 
         img = img.numpy().transpose(1, 2, 0)
         img = torch.from_numpy(img)
-        img = prep_image(img, inp_dim)
+        img = utilzy.prep_image(img, inp_dim)
 
         
         if CUDA:
@@ -187,11 +191,11 @@ for epoch in range(args.n_epochs):
         
 
         #nms_conf
-        prediction = cal_conf(prediction, anno, args.confidence, CUDA, args.batch_size)
+        prediction = utilzy.cal_conf(prediction, anno, args.confidence, CUDA, args.batch_size)
 
 
 
-        valid = read_anno(anno)
+        valid = utilzy.read_anno(anno)
         
         if CUDA:
             valid = valid.cuda()
