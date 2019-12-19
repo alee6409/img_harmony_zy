@@ -28,6 +28,6 @@ to be continued.
 *reference*:
 AYOOSH KATHURIA
 https://blog.paperspace.com/how-to-implement-a-yolo-v3-object-detector-from-scratch-in-pytorch-part-2/
-thanks him a lot ^_^
+thank him a lot ^_^
 
 l1119289003@outlook.com feel free to connect me if any bug flies hhh
