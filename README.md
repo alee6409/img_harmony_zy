@@ -1,5 +1,5 @@
 # img_harmony_zy
-train your yolov3 with your images.
+train yolov3 with your images.
 
 detect_zy.py is a detect file(run file)
 
