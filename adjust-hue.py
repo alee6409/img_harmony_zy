@@ -4,7 +4,7 @@ import os
 import time
 import glob
 
-os.chdir('/Users/zhiyilee/cs/python/yolov3_zy')
+os.chdir('d:/cs/data/coco/train2017/yellow')
 def rgb_to_hsv(rgb):
     # Translated from source of colorsys.rgb_to_hsv
     # r,g,b should be a numpy arrays with values between 0 and 255
@@ -58,20 +58,44 @@ def shift_hue(arr,hout):
     return rgb
 
 
-if __name__=='__main__':
-    purple_hue = (180-34)/360.0
-    
-    path = '/Users/zhiyilee/cs/python/yolov3_zy'
+# if __name__=='__main__':
+#     for i in range(-180, 180, 1):
+#         i_hue = (180+i)/360.0 #-34 green
+        
+#         path = 'd:/cs/data/coco/temp_test'
 
+#         for filename in glob.glob(os.path.join(path, '*.png')):
+        
+#             start = time.time()
+#             img = Image.open('{:s}'.format(filename[26:])).convert('RGBA')
+#             arr = np.array(img)
+
+#             new_img = Image.fromarray(shift_hue(arr,i_hue), 'RGBA')
+#             new_img.save('hue_test/{:d}_{:s}'.format(i+180, filename[26:]))
+
+#             end = time.time()
+#             total_time = end-start
+#             print("total time is {:f}".format(total_time))
+
+if __name__=='__main__':
+   
+    i_hue = (59)/360.0 #0red 59yellow 112green 242blue 282purple
+    
+    path = 'd:/cs/data/coco/train2017/yellow/'
+
+    start_time = time.time()
     for filename in glob.glob(os.path.join(path, '*.png')):
     
         start = time.time()
-        img = Image.open('{:s}'.format(filename[36:])).convert('RGBA')
+        img = Image.open('{:s}'.format(filename[33:])).convert('RGBA')
         arr = np.array(img)
 
-        new_img = Image.fromarray(shift_hue(arr,purple_hue), 'RGBA')
-        new_img.save('test_{:s}'.format(filename[36:]))
+        new_img = Image.fromarray(shift_hue(arr,i_hue), 'RGBA')
+        new_img.save('d:/cs/data/coco/train2017/hue_yellow/yellow_{:s}'.format(filename[33:]))
 
         end = time.time()
         total_time = end-start
-        print("total time is {:f}".format(total_time))
+        print("time is {:f}".format(total_time))
+    end_time = time.time()
+    t_time = end_time - start_time
+    print('total time is {:f}'.format(t_time))
