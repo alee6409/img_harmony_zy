@@ -58,18 +58,22 @@ def arg_parse():
     parser.add_argument('--cpu', type = int, default=2, help='number of cup cores')
     parser.add_argument('--train/val', type = str, default='train', help='train or val mode')
     parser.add_argument('--num_anchors', type=int, default=3, help='number of anchors')
+    parser.add_argument('--path2img', type=str, default='d:/cs/data/coco/train2017_2/', help='absolute path to your training/valid images')
+    parser.add_argument('--path2json', type=str, default='d:/cs/data/coco/annotations/instances_train2017.json', help='absolute path to your annotation json file')
     return parser.parse_args()
     
 args = arg_parse()
 
+img_path = args.path2img
+json_path = args.path2json
 
 CUDA = torch.cuda.is_available()
 
 # Configure data loader
 
 #os.makedirs("../../data/coco/train2017/test_example", exist_ok=True)
-darknet_datasets = datasets.CocoDetection(root='d:/cs/data/coco/train2017_2/', 
-                                          annFile = 'd:/cs/data/coco/annotations/instances_train2017.json',
+darknet_datasets = datasets.CocoDetection(root=img_path, 
+                                          annFile = json_path,
                                           transform = transforms.Compose([transforms.ToTensor(), 
                                                                           transforms.Normalize([0.5], [0.5])]))
 # dataloader = torch.utils.data.DataLoader(
