@@ -18,7 +18,7 @@ adjust_hue.py and rgb2grey.py are my tools, which only create my datasets from C
 
 to be continued.
 
-reference:
+*reference*:
 AYOOSH KATHURIA
 https://blog.paperspace.com/how-to-implement-a-yolo-v3-object-detector-from-scratch-in-pytorch-part-2/
 thanks him a lot ^_^
