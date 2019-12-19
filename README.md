@@ -17,7 +17,7 @@ adjust_hue.py and rgb2grey.py are my tools, which only create my datasets from C
 
 ***use it like***
 
-```python3 detectzy.py --path2img 'your absolute path to img director' --path2json 'your absolute path to json director'```
+```python3 detectzy.py --path2img 'your absolute path to img director' --path2json 'your absolute path to json file'```
 
 1. only support **coco-like** images/json file now.
 2. default reso is 608
