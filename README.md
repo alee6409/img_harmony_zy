@@ -1,6 +1,10 @@
 # img_harmony_zy
 ## train yolov3 with your images.
 
+well today i find a project from https://github.com/ultralytics/yolov3.git. it does the same thing as mine, 
+however! it is awesome! really awesome! let me learn from them then update this resp.
+
+----------------------------------------------------------------------------------------
 + detectzy.py is a detect file(run file)
 
 + darknetzy.py is yolov3 structure network
@@ -21,7 +25,7 @@ adjust_hue.py and rgb2grey.py are my tools, which only create my datasets from C
 
 1. only support **coco-like** images/json file now.
 2. default reso is 608
-3. up to now, the default batch_size is 1, maybe bigger in the future. I haven`t gotton time to do this
+3. due to time limited, up to now, the default batch_size is 1, maybe bigger in the future.
 
 to be continued.
 
