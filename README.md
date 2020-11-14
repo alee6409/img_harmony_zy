@@ -14,6 +14,8 @@ i put my old codes to the {old} directory and the {COCO_forYOLO} directory conta
 the {yolov3} directory contains the whole tools to train your own data. Although the structure is really clear, i still pursuade u to read the {train.py} and the {detect.py} carefully. maybe u can modify them for your own uses.
 
 at last, the {rgb2grey.py} is for changing the colorful images to black-white ones. if u dont need, just ignore it.
+
+ps. i cant update the COCO_forYOLO directory from my mac, so if u need it u can clone it from ChriswooTalent's github page.
 _______________________________________________________________________________________
 well today i find a project from . it does the same thing as mine, 
 however! it is awesome! really awesome! let me learn from them then update this resp.
